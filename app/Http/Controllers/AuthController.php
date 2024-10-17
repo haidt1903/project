@@ -41,4 +41,8 @@ class AuthController extends Controller
         User::query()->create($data);
         return redirect()->route('login')->with('message','Đăng ký thành công');
     }
+    public function Logout() {
+        Auth::logout();
+        return redirect()->route('index');
+    }
 }
