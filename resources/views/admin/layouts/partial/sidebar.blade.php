@@ -23,7 +23,7 @@
         <a href="charts.html"><i class="fas fa-chart-bar"></i>Đơn hàng</a>
     </li>
     <li>
-        <a href="users.html"><i class="fas fa-user-friends"></i>Khách hàng</a>
+        <a href="{{route('admin.user.index')}}"><i class="fas fa-user-friends"></i>Khách hàng</a>
     </li>
     <li>
         <a href="settings.html"><i class="fas fa-cog"></i>Cài đặt</a>
