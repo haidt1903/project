@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AdminUser;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Client\ProductController as ClientProductController;
 use App\Http\Middleware\Admin;
 use Illuminate\Support\Facades\Route;
 
@@ -43,9 +44,9 @@ Route::middleware('auth',Admin::class)->group(function () {
 });
 
 
-Route::get('/',function(){
-    return view('client.index');
-})->name('index');
+Route::get('/',[ClientProductController::class,'index'])->name('index');
+Route::get('detail-product/{product}',[ClientProductController::class,'detail'])->name('detail.product');
+
 
 Route::get('/login',[AuthController::class,'getLogin'])->name('login');
 Route::post('/login',[AuthController::class,'postLogin'])->name('postLogin');
