@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AdminUser;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Client\ProductController as ClientProductController;
 use App\Http\Middleware\Admin;
 use Illuminate\Support\Facades\Route;
 
@@ -43,9 +44,20 @@ Route::middleware('auth',Admin::class)->group(function () {
 });
 
 
-Route::get('/',function(){
-    return view('client.index');
-})->name('index');
+Route::get('/',[ClientProductController::class,'index'])->name('index');
+Route::get('detail-product/{product}',[ClientProductController::class,'detail'])->name('detail.product');
+
+Route::get('gioithieu', function () {
+    return view('client.gioithieu');
+})->name('client.gioithieu');
+
+Route::get('search', [ClientProductController::class, 'search'])->name('search');
+
+Route::get('products', [ClientProductController::class, 'indexProduct'])->name('indexProduct');
+
+
+
+
 
 Route::get('/login',[AuthController::class,'getLogin'])->name('login');
 Route::post('/login',[AuthController::class,'postLogin'])->name('postLogin');
@@ -54,3 +66,5 @@ Route::get('/register',[AuthController::class,'getRegister'])->name('register');
 Route::post('/register',[AuthController::class,'postRegister'])->name('postRegister');
 
 Route::get('/logout',[AuthController::class,'Logout'])->name('logout');
+
+

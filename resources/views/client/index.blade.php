@@ -87,91 +87,26 @@
                         </div>
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-md-3 mt-3">
-                                    <div class="card">
-                                        <img class="card-img-top" src="https://dummyimage.com/600x400/55595c/fff"
-                                            alt="Card image cap">
-                                        <div class="card-body">
-                                            <h4 class="card-title text-center"><a href="product-detail.html"
-                                                    title="View Product">Product
-                                                    title</a></h4>
-
-                                            <div class="row">
-                                                <div class="col">
-                                                    <p class="btn text font-weight-bold btn-block">99.00 $</p>
-                                                </div>
-                                                <div class="col">
-                                                    <a href="cart.html" class="btn btn-danger btn-block">Thêm vào giỏ
-                                                        hàng</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3 mt-3">
-                                    <div class="card">
-                                        <img class="card-img-top" src="https://dummyimage.com/600x400/55595c/fff"
-                                            alt="Card image cap">
-                                        <div class="card-body">
-                                            <h4 class="card-title text-center"><a href="product.html"
-                                                    title="View Product">Product
-                                                    title</a></h4>
-
-                                            <div class="row">
-                                                <div class="col">
-                                                    <p class="btn text font-weight-bold btn-block">99.00 $</p>
-                                                </div>
-                                                <div class="col">
-                                                    <a href="cart.html" class="btn btn-danger btn-block">Thêm vào giỏ
-                                                        hàng</a>
+                                @foreach ($products as $product)
+                                    <div class="col-md-3 mt-3">
+                                        <div class="card">
+                                            <img class="card-img-top" src="{{Storage::url($product->image)}}"
+                                                alt="Card image cap">
+                                            <div class="card-body">
+                                                <h4 class="card-title text-center">{{$product->name}}</h4>
+                                                <div class="row">
+                                                    {{-- <div class="col">
+                                                        <p class="btn text font-weight-bold btn-block">{{$product->price}}</p>
+                                                    </div> --}}
+                                                    <div class="col">
+                                                        <a href="{{route('detail.product',$product->id)}}" class="btn btn-primary btn-block">Chi tiết</a>
+                                                        <a href="cart.html" class="btn btn-danger btn-block">Thêm vào giỏ hàng</a>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-md-3 mt-3">
-                                    <div class="card">
-                                        <img class="card-img-top" src="https://dummyimage.com/600x400/55595c/fff"
-                                            alt="Card image cap">
-                                        <div class="card-body">
-                                            <h4 class="card-title text-center"><a href="product.html"
-                                                    title="View Product">Product
-                                                    title</a></h4>
-
-                                            <div class="row">
-                                                <div class="col">
-                                                    <p class="btn text font-weight-bold btn-block">99.00 $</p>
-                                                </div>
-                                                <div class="col">
-                                                    <a href="cart.html" class="btn btn-danger btn-block">Thêm vào giỏ
-                                                        hàng</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3 mt-3">
-                                    <div class="card">
-                                        <img class="card-img-top" src="https://dummyimage.com/600x400/55595c/fff"
-                                            alt="Card image cap">
-                                        <div class="card-body">
-                                            <h4 class="card-title text-center"><a href="product.html"
-                                                    title="View Product">Product
-                                                    title</a></h4>
-
-                                            <div class="row">
-                                                <div class="col">
-                                                    <p class="btn text font-weight-bold btn-block">99.00 $</p>
-                                                </div>
-                                                <div class="col">
-                                                    <a href="cart.html" class="btn btn-danger btn-block">Thêm vào giỏ
-                                                        hàng</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
+                                @endforeach
                             </div>
                         </div>
                     </div>
