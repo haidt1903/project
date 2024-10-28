@@ -11,25 +11,25 @@
         <div class="collapse navbar-collapse justify-content-center" id="navbarsExampleDefault">
             <ul class="navbar-nav m-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Trang chủ <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="/">Trang chủ <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="products.html">Sản phẩm</a>
+                    <a class="nav-link" href="products">Sản phẩm</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="product.html">Giới thiệu</a>
+                    <a class="nav-link" href="{{ route('client.gioithieu') }}">Giới thiệu</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="contact.html">Liên hệ</a>
+                    <a class="nav-link" href="">Liên hệ</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="contact.html">Chính sách</a>
                 </li>
             </ul>
 
-            <form class="form-inline my-2 my-lg-0">
+            <form action="{{ route('search') }}" method="GET" class="form-inline my-2 my-lg-0">
                 <div class="input-group input-group-sm">
-                    <input type="text" class="form-control input-custom" placeholder="Từ khóa...">
+                    <input type="text" name="keyword" class="form-control input-custom" placeholder="Từ khóa...">
                     <div class="input-group-append">
                         <button type="button" class="btn btn-info btn-number btn-custom">
                             <i class="fa fa-search"></i>

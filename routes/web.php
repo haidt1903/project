@@ -47,6 +47,20 @@ Route::middleware('auth',Admin::class)->group(function () {
 Route::get('/',[ClientProductController::class,'index'])->name('index');
 Route::get('detail-product/{product}',[ClientProductController::class,'detail'])->name('detail.product');
 
+<<<<<<< HEAD
+=======
+Route::get('gioithieu', function () {
+    return view('client.gioithieu');
+})->name('client.gioithieu');
+
+Route::get('search', [ClientProductController::class, 'search'])->name('search');
+
+Route::get('products', [ClientProductController::class, 'indexProduct'])->name('indexProduct');
+
+
+
+
+>>>>>>> f275d0c8dfd3e5392012e0c4580a9a9754a4d03e
 
 Route::get('/login',[AuthController::class,'getLogin'])->name('login');
 Route::post('/login',[AuthController::class,'postLogin'])->name('postLogin');
@@ -55,3 +69,5 @@ Route::get('/register',[AuthController::class,'getRegister'])->name('register');
 Route::post('/register',[AuthController::class,'postRegister'])->name('postRegister');
 
 Route::get('/logout',[AuthController::class,'Logout'])->name('logout');
+
+
