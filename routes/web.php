@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AdminUser;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Client\CartController;
 use App\Http\Controllers\Client\ProductController as ClientProductController;
 use App\Http\Middleware\Admin;
 use Illuminate\Support\Facades\Route;
@@ -47,20 +48,20 @@ Route::middleware('auth',Admin::class)->group(function () {
 Route::get('/',[ClientProductController::class,'index'])->name('index');
 Route::get('detail-product/{product}',[ClientProductController::class,'detail'])->name('detail.product');
 
-<<<<<<< HEAD
-=======
+Route::get('product/{product}',[ClientProductController::class,'filterProduct'])->name('filter.product');
+
+
 Route::get('gioithieu', function () {
-    return view('client.gioithieu');
+    return view('client.cart');
 })->name('client.gioithieu');
 
 Route::get('search', [ClientProductController::class, 'search'])->name('search');
 
+Route::get('cart/{id}', [CartController::class, 'index'])->name('index.cart');
+
+
 Route::get('products', [ClientProductController::class, 'indexProduct'])->name('indexProduct');
 
-
-
-
->>>>>>> f275d0c8dfd3e5392012e0c4580a9a9754a4d03e
 
 Route::get('/login',[AuthController::class,'getLogin'])->name('login');
 Route::post('/login',[AuthController::class,'postLogin'])->name('postLogin');

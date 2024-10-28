@@ -69,4 +69,5 @@ class ProductController extends Controller
         Product::query()->update($data);
         return redirect()->route('admin.product.index')->with('message','Sửa thành công');
     }
+    
 }
