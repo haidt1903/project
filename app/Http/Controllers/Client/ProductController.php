@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -25,6 +26,11 @@ class ProductController extends Controller
     public function indexProduct() {
         $products = Product::all();
         return view('client.product', compact('products'));
+    }
+    public function filterProduct($id) {
+        $cate = Category::find($id);
+        $products = Product::where('category_id',$id)->get();
+        return view('client.product',compact('products','cate'));
     }
     
 }

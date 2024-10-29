@@ -22,7 +22,10 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Paginator::useBootstrapFive();
+<<<<<<< HEAD
 
+=======
+>>>>>>> 33716e1939581e732d994a52dc6a31761d0d0440
         view()->composer('*',function ($view) {
             $categories =DB::table('categories')->get(); 
             $view->with(compact('categories'));

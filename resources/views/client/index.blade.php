@@ -100,7 +100,7 @@
                                                     </div> --}}
                                                     <div class="col">
                                                         <a href="{{route('detail.product',$product->id)}}" class="btn btn-primary btn-block">Chi tiết</a>
-                                                        <a href="cart.html" class="btn btn-danger btn-block">Thêm vào giỏ hàng</a>
+                                                        <a href="{{route('index.cart',$product->id)}}" class="btn btn-danger btn-block">Thêm vào giỏ hàng</a>
                                                     </div>
                                                 </div>
                                             </div>
