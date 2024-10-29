@@ -66,7 +66,7 @@ class ProductController extends Controller
             Storage::delete($product->image);
             $data['image'] = $this->uploadFile($request,'image');
         }
-        Product::query()->update($data);
+        $product->update($data);
         return redirect()->route('admin.product.index')->with('message','Sửa thành công');
     }
 }

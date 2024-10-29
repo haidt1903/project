@@ -6,7 +6,7 @@
                 <div class="card bg-light mb-3">
                     <form class="pb-3">
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Tìm kiếm sản phẩm...">
+                            <input type="text" name="keyword" class="form-control" placeholder="Tìm kiếm sản phẩm...">
                             <div class="input-group-append">
                                 <button class="btn btn-success" type="button"><i class="fa fa-search"></i></button>
                             </div>
@@ -15,13 +15,9 @@
                     <div class="card-header bg-secondary text-white text-uppercase"><i class="fa fa-list"></i> Danh mục
                     </div>
                     <ul class="list-group category_block">
-                        <li class="list-group-item"><a href="category.html">Cras justo odio</a></li>
-                        <li class="list-group-item"><a href="category.html">Dapibus ac facilisis in</a></li>
-                        <li class="list-group-item"><a href="category.html">Morbi leo risus</a></li>
-                        <li class="list-group-item"><a href="category.html">Porta ac consectetur ac</a></li>
-                        <li class="list-group-item"><a href="category.html">Vestibulum at eros</a></li>
-                        <li class="list-group-item"><a href="category.html">Vestibulum at eros</a></li>
-                        <li class="list-group-item"><a href="category.html">Vestibulum at eros</a></li>
+                        @foreach ($categories as $category)
+                            <li class="list-group-item"><a href="category.html">{{ $category->name}}</a></li>
+                        @endforeach
                     </ul>
                 </div>
                 <div class="card bg-light mb-3">
@@ -37,17 +33,18 @@
             </div>
             <div class="col">
                 <div class="row">
-                    <div class="col-12 col-md-6 col-lg-4 mt-2">
-                        @foreach ($products as $product)
+                    @foreach ($products as $product)
+                        <div class="col-12 col-md-6 col-lg-4 mt-2">
                             <div class="card">
-                                <img class="card-img-top" src="{{Storage::url($product->image)}}"
-                                    alt="Card image cap">
+                                <div class="">
+                                    <img class="card-img-top" src="{{ Storage::url($product->image) }}" alt="{{ $product->name }}" width="200px" height="auto">
+                                </div>
                                 <div class="card-body">
-                                    <h4 class="card-title"><a href="product.html" title="View Product">{{$product->name}}</a>
+                                    <h4 class="card-title"><a href="{{route('detail.product',$product->id)}}" title="View Product">{{ $product->name }}</a>
                                     </h4>
                                     <div class="row">
                                         <div class="col">
-                                            <p class="btn font-weight-bold btn-block">{{$product->price}}</p>
+                                            <p class="btn font-weight-bold btn-block">{{ $product->price }}VNĐ</p>
                                         </div>
                                         <div class="col">
                                             <a href="#" class="btn btn-danger btn-block">Add to cart</a>
@@ -55,12 +52,10 @@
                                     </div>
                                 </div>
                             </div>
-                        @endforeach
-                    </div>
+                        </div>
+                    @endforeach
                 </div>
             </div>
-
-            
         </div>
     </div>
 @endsection

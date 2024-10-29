@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 @section('content')
 @if (session('message'))
-<div class="alert bg-danger text-light">
+<div class="alert bg-success text-light">
   {{ session('message') }}
 </div>
 @endif
