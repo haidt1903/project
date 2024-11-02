@@ -57,10 +57,16 @@ Route::get('gioithieu', function () {
 
 Route::get('search', [ClientProductController::class, 'search'])->name('search');
 
-Route::get('cart/{id}', [CartController::class, 'index'])->name('index.cart');
 
 
 Route::get('products', [ClientProductController::class, 'indexProduct'])->name('indexProduct');
+
+Route::get('/cart/add_to_cart/{id}', [CartController::class, 'addToCart'])->name('add.cart');
+Route::get('/cart', [CartController::class, 'show'])->name('show.cart');
+Route::post('/cart/update_quantity/{id}', [CartController::class, 'updateQuantity'])->name('update.quantity');
+Route::delete('/cart/remove/{id}', [CartController::class, 'remove'])->name('remove.cart');
+Route::post('/cart/clear', [CartController::class, 'clear'])->name('clear.cart');
+
 
 
 Route::get('/login',[AuthController::class,'getLogin'])->name('login');

@@ -90,17 +90,21 @@
                                 @foreach ($products as $product)
                                     <div class="col-md-3 mt-3">
                                         <div class="card">
-                                            <img class="card-img-top" src="{{Storage::url($product->image)}}" width="200px"
-                                                alt="Card image cap">
+                                            <img class="card-img-top" src="{{ Storage::url($product->image) }}"
+                                                width="200px" alt="Card image cap">
                                             <div class="card-body">
-                                                <h4 class="card-title text-center">{{$product->name}}</h4>
+                                                <h4 class="card-title text-center">{{ $product->name }}</h4>
                                                 <div class="row">
                                                     {{-- <div class="col">
                                                         <p class="btn text font-weight-bold btn-block">{{$product->price}}</p>
                                                     </div> --}}
                                                     <div class="col">
-                                                        <a href="{{route('detail.product',$product->id)}}" class="btn btn-primary btn-block">Chi tiết</a>
-                                                        <a href="{{route('index.cart',$product->id)}}" class="btn btn-danger btn-block">Thêm vào giỏ hàng</a>
+                                                        <a href="{{ route('detail.product', $product->id) }}"
+                                                            class="btn btn-primary btn-block">Chi tiết</a>
+                                                        <a href="#"
+                                                        data-url="{{route('add.cart',['id' => $product->id])}}"
+                                                        class="btn btn-danger add_to_cart btn-block">Thêm vào giỏ
+                                                            hàng</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -114,4 +118,33 @@
             </div>
         </div>
     </section>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script>
+    function addToCart(event) {
+    event.preventDefault();
+    let urlCart = $(this).data('url');
+    
+    $.ajax({
+        type: "GET", // Change to "POST" if your route requires it
+        url: urlCart,
+        headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
+        dataType: 'json',
+        success: function(data) {
+            alert('Thêm sản phẩm thành công');
+        },
+        error: function(xhr, status, error) {
+            console.error(xhr.responseText); // Log error details to console for debugging
+            alert('Thêm sản phẩm thất bại');
+        }
+    });
+}
+
+$(function() {
+    $('.add_to_cart').on('click', addToCart);
+});
+
+</script>
+
+
 @endsection
