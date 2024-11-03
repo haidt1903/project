@@ -52,7 +52,7 @@ Route::get('product/{product}',[ClientProductController::class,'filterProduct'])
 
 
 Route::get('gioithieu', function () {
-    return view('client.cart');
+    return view('client.gioithieu');
 })->name('client.gioithieu');
 
 Route::get('search', [ClientProductController::class, 'search'])->name('search');

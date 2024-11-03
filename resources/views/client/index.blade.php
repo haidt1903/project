@@ -101,7 +101,7 @@
                                                     <div class="col">
                                                         <a href="{{ route('detail.product', $product->id) }}"
                                                             class="btn btn-primary btn-block">Chi tiết</a>
-                                                        <a href="#"
+                                                        <a href=""
                                                         data-url="{{route('add.cart',['id' => $product->id])}}"
                                                         class="btn btn-danger add_to_cart btn-block">Thêm vào giỏ
                                                             hàng</a>
@@ -119,32 +119,6 @@
         </div>
     </section>
 
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<script>
-    function addToCart(event) {
-    event.preventDefault();
-    let urlCart = $(this).data('url');
-    
-    $.ajax({
-        type: "GET", // Change to "POST" if your route requires it
-        url: urlCart,
-        headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
-        dataType: 'json',
-        success: function(data) {
-            alert('Thêm sản phẩm thành công');
-        },
-        error: function(xhr, status, error) {
-            console.error(xhr.responseText); // Log error details to console for debugging
-            alert('Thêm sản phẩm thất bại');
-        }
-    });
-}
-
-$(function() {
-    $('.add_to_cart').on('click', addToCart);
-});
-
-</script>
 
 
 @endsection

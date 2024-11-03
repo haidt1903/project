@@ -46,10 +46,15 @@
                                                     </button>
                                                 </div>
                                                 <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                                                    <h6 class="mb-0">{{ number_format($cartItems['price']) }}</h6>
+                                                    <h6 class="mb-0 price" data-price="{{ $cartItems['price'] }}">{{ number_format($cartItems['price']) }}</h6>
+                                                </div>
+                                                <div>
+                                                    <h6 class="mb-0">{{ number_format($cartItems['price']*$cartItems['quantity']) }}</h6>
                                                 </div>
                                                 <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                                                    <a href="#!" class="text-muted"><i class="fas fa-times"></i></a>
+                                                    <a
+                                                    data-url="{{ route('remove.cart', ['id' => $cartItems['id']]) }}"
+                                                     href="{{route('remove.cart',$cartItems['id'])}}" class="remove-btn" class="text-muted"><i class="fas fa-times"></i></a>
                                                 </div>
                                             </div>
                                         @endforeach
@@ -58,7 +63,7 @@
                                         <hr class="my-4">
 
                                         <div class="pt-5">
-                                            <h6 class="mb-0"><a href="#!" class="text-body"><i
+                                            <h6 class="mb-0"><a href="{{route('index')}}" class="text-body"><i
                                                         class="fas fa-long-arrow-alt-left me-2"></i>Back to shop</a></h6>
                                         </div>
                                     </div>
@@ -99,54 +104,5 @@
         </div>
     </section>
 
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            function updateQuantity(input) {
-                let url = $(input).data('url');
-                let newQuantity = $(input).val();
-
-                $.ajax({
-                    type: "POST",
-                    url: url,
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    data: {
-                        quantity: newQuantity
-                    },
-                    dataType: 'json',
-                    success: function(response) {
-                        alert('Quantity updated!');
-                        // Optionally update other UI elements, like cart totals
-                    },
-                    error: function(xhr, status, error) {
-                        console.error(xhr.responseText);
-                        alert('Failed to update quantity');
-                    }
-                });
-            }
-
-            // Listen for changes in the quantity input field
-            $('.quantity_input').on('change', function() {
-                updateQuantity(this);
-            });
-
-            // Decrease quantity on button click
-            $('.decrease-btn').on('click', function(event) {
-                event.preventDefault();
-                let input = $(this).siblings('.quantity_input')[0];
-                input.stepDown();
-                updateQuantity(input);
-            });
-
-            // Increase quantity on button click
-            $('.increase-btn').on('click', function(event) {
-                event.preventDefault();
-                let input = $(this).siblings('.quantity_input')[0];
-                input.stepUp();
-                updateQuantity(input);
-            });
-        });
-    </script>
+    
 @endsection

@@ -70,6 +70,17 @@ class CartController extends Controller
         // Return error if item not found in the cart
         return response()->json(['error' => 'Product not found in cart'], 404);
     }
+    public function remove($id) {
+        $cart = session()->get('cart', []);
     
+        if (isset($cart[$id])) {
+            unset($cart[$id]);  // Remove the item from the cart
+            session()->put('cart', $cart); // Update session with the modified cart
+    
+            return response()->json(['message' => 'Item removed from cart', 'cart' => $cart]);
+        }
+    
+        return response()->json(['error' => 'Item not found in cart'], 404);
+    }
     
 }
