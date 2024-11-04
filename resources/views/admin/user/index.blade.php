@@ -2,6 +2,7 @@
 @section('content')
 <div class="card-body">
     <div class="table-responsive">
+        <h1>Quản lý người dùng</h1>
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
             <thead>
                 <tr>
@@ -22,7 +23,7 @@
                         <td>{{ $user->fullname }}</td>
                         <td>{{ $user->email }}</td>
                         <td>
-                            <img src="{{ Storage::url($user->image) }}" width="200px" alt="">
+                            <img src="{{ Storage::url($user->image) }}" class="rounded-circle mr-3" style="width: 60px; height: 60px;">
                         </td>
                         <td>{{ $user->role }}</td>
                         <td class="d-flex">

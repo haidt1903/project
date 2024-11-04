@@ -12,4 +12,8 @@ class CartController extends Controller
         $cart = session()->get('cart',[]);
         return view('client.cart',compact('cart'));
     }
+
+    public function addToCart($id){
+        
+    }
 }

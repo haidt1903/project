@@ -10,3 +10,5 @@
 <!-- Custom -->
 <link rel="stylesheet" href="/content/css/style.css" type="text/css">
 <link rel="stylesheet" href="/content/css/styles.css" type="text/css">
+
+<link rel="stylesheet" href="https://unpkg.com/bootstrap@5.3.3/dist/css/bootstrap.min.css">

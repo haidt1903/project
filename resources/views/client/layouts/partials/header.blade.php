@@ -20,7 +20,7 @@
                     <a class="nav-link" href="{{ route('client.gioithieu') }}">Giới thiệu</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="">Liên hệ</a>
+                    <a class="nav-link" href="contact">Liên hệ</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="contact.html">Chính sách</a>
@@ -31,7 +31,7 @@
                 <div class="input-group input-group-sm">
                     <input type="text" name="keyword" class="form-control input-custom" placeholder="Từ khóa...">
                     <div class="input-group-append">
-                        <button type="button" class="btn btn-info btn-number btn-custom">
+                        <button type="submit" class="btn btn-info btn-number btn-custom">
                             <i class="fa fa-search"></i>
                         </button>
                     </div>
@@ -40,7 +40,7 @@
             <!-- user -->
             <div class="widgets-wrap float-md-right ml-4">
                 <div class="widget-header  mr-3">
-                    <a href="cart.html" class="icon icon-sm rounded-circle border"><i
+                    <a href="" class="icon icon-sm rounded-circle border"><i
                             class="fa fa-shopping-cart"></i></a>
                     <span class="badge badge-pill badge-danger notify">0</span>
                 </div>

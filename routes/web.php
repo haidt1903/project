@@ -3,9 +3,14 @@
 use App\Http\Controllers\Admin\AdminUser;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\CommentController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\ContactController;
+
 use App\Http\Controllers\Client\CartController;
 use App\Http\Controllers\Client\ProductController as ClientProductController;
+use App\Http\Controllers\Client\ContactController as ClientContactController;
+use App\Http\Controllers\Client\CommentController as ClientCommentController;
 use App\Http\Middleware\Admin;
 use Illuminate\Support\Facades\Route;
 
@@ -19,25 +24,34 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::middleware('auth',Admin::class)->group(function () {
+
+Route::middleware('auth', Admin::class)->group(function () {
     Route::prefix('admin')->group(function () {
-        Route::get('/index',function () {
+        Route::get('/index', function () {
             return view('admin.index');
         })->name('admin.index');
-        Route::get('category',[CategoryController::class,'index'])->name('admin.category.index');
-        Route::get('category/create',[CategoryController::class,'create'])->name('admin.category.create');
-        Route::post('category/create',[CategoryController::class,'store'])->name('admin.category.store');
-        Route::get('category/update/{category}',[CategoryController::class,'edit'])->name('admin.category.edit');
-        Route::put('category/update/{category}',[CategoryController::class,'update'])->name('admin.category.update');
-        Route::delete('category/delete/{category}',[CategoryController::class,'delete'])->name('admin.category.delete');
-    
-        Route::get('product',[ProductController::class,'index'])->name('admin.product.index');
-        Route::get('product/create',[ProductController::class,'create'])->name('admin.product.create');
-        Route::post('product/create',[ProductController::class,'store'])->name('admin.product.store');
-        Route::get('product/update/{product}',[ProductController::class,'edit'])->name('admin.product.edit');
-        Route::put('product/update/{product}',[ProductController::class,'update'])->name('admin.product.update');
-        Route::delete('product/delete/{product}',[ProductController::class,'delete'])->name('admin.product.delete');
-    
+        Route::get('category', [CategoryController::class, 'index'])->name('admin.category.index');
+        Route::get('category/create', [CategoryController::class, 'create'])->name('admin.category.create');
+        Route::post('category/create', [CategoryController::class, 'store'])->name('admin.category.store');
+        Route::get('category/update/{category}', [CategoryController::class, 'edit'])->name('admin.category.edit');
+        Route::put('category/update/{category}', [CategoryController::class, 'update'])->name('admin.category.update');
+        Route::delete('category/delete/{category}', [CategoryController::class, 'delete'])->name('admin.category.delete');
+
+        Route::get('product', [ProductController::class, 'index'])->name('admin.product.index');
+        Route::get('product/create', [ProductController::class, 'create'])->name('admin.product.create');
+        Route::post('product/create', [ProductController::class, 'store'])->name('admin.product.store');
+        Route::get('product/update/{product}', [ProductController::class, 'edit'])->name('admin.product.edit');
+        Route::put('product/update/{product}', [ProductController::class, 'update'])->name('admin.product.update');
+        Route::delete('product/delete/{product}', [ProductController::class, 'delete'])->name('admin.product.delete');
+
+
+        Route::get('contact', [ContactController::class, 'index'])->name('admin.contact.index');
+        Route::delete('contact/delete/{contact}', [ContactController::class, 'delete'])->name('admin.contact.delete');
+
+
+        Route::get('/comments', [CommentController::class, 'index'])->name('admin.comments.index');
+        Route::delete('/comments/{comment}', [CommentController::class, 'delete'])->name('admin.comments.delete');
+
         Route::get('user', [AdminUser::class, 'index'])->name('admin.user.index');
         Route::post('/admin/users/{id}/update-role', [AdminUser::class, 'updateRole'])->name('admin.users.updateRole');
         Route::delete('user/{id}', [AdminUser::class, 'destroy'])->name('admin.user.delete');
@@ -45,15 +59,19 @@ Route::middleware('auth',Admin::class)->group(function () {
 });
 
 
-Route::get('/',[ClientProductController::class,'index'])->name('index');
-Route::get('detail-product/{product}',[ClientProductController::class,'detail'])->name('detail.product');
+Route::get('/', [ClientProductController::class, 'index'])->name('index');
+Route::get('detail-product/{product}', [ClientProductController::class, 'detail'])->name('detail.product');
 
-Route::get('product/{product}',[ClientProductController::class,'filterProduct'])->name('filter.product');
+Route::get('product/{product}', [ClientProductController::class, 'filterProduct'])->name('filter.product');
 
 
 Route::get('gioithieu', function () {
-    return view('client.cart');
+    return view('client.gioithieu');
 })->name('client.gioithieu');
+
+
+Route::resource('contact', ClientContactController::class);
+
 
 Route::get('search', [ClientProductController::class, 'search'])->name('search');
 
@@ -62,13 +80,14 @@ Route::get('cart/{id}', [CartController::class, 'index'])->name('index.cart');
 
 Route::get('products', [ClientProductController::class, 'indexProduct'])->name('indexProduct');
 
-
-Route::get('/login',[AuthController::class,'getLogin'])->name('login');
-Route::post('/login',[AuthController::class,'postLogin'])->name('postLogin');
-
-Route::get('/register',[AuthController::class,'getRegister'])->name('register');
-Route::post('/register',[AuthController::class,'postRegister'])->name('postRegister');
-
-Route::get('/logout',[AuthController::class,'Logout'])->name('logout');
+//bình luận
+Route::post('/products/{product}/comments', [ClientCommentController::class, 'store'])->middleware('auth')->name('comments.store');
 
 
+Route::get('/login', [AuthController::class, 'getLogin'])->name('login');
+Route::post('/login', [AuthController::class, 'postLogin'])->name('postLogin');
+
+Route::get('/register', [AuthController::class, 'getRegister'])->name('register');
+Route::post('/register', [AuthController::class, 'postRegister'])->name('postRegister');
+
+Route::get('/logout', [AuthController::class, 'Logout'])->name('logout');
