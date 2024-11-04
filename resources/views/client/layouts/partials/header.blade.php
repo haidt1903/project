@@ -40,7 +40,9 @@
             <!-- user -->
             <div class="widgets-wrap float-md-right ml-4">
                 <div class="widget-header  mr-3">
-                    <a href="" class="icon icon-sm rounded-circle border"><i
+
+                    <a href="{{route('show.cart')}}" class="icon icon-sm rounded-circle border"><i
+
                             class="fa fa-shopping-cart"></i></a>
                     <span class="badge badge-pill badge-danger notify">0</span>
                 </div>
@@ -81,7 +83,7 @@
                 @endif
 
 
-            </div> <!-- widgets-wrap.// -->
+            </div> 
 
         </div>
 
