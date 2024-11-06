@@ -5,10 +5,7 @@
 <script src="/content/js/slick.min.js"></script>
 <script>
     function menuToggle() {
-      const toggleMenu = document.querySelector(".menu");
-      toggleMenu.classList.toggle("active");
+        const toggleMenu = document.querySelector(".menu");
+        toggleMenu.classList.toggle("active");
     }
-
-  </script>
-
-
+</script>
