@@ -94,8 +94,7 @@ $(document).ready(function() {
                 updateCartTotal();
             },
             error: function(xhr, status, error) {
-                console.error(xhr.responseText);
-                alert('Failed to update quantity');
+                console.error(xhr.responseText);alert('Failed to update quantity');
             }
         });
     }

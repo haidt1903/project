@@ -17,7 +17,10 @@
         <a href="{{Route('admin.product.index')}}"><i class="fas fa-table"></i>Sản phẩm</a>
     </li>
     <li>
-        <a href="charts.html"><i class="fas fa-chart-bar"></i>Bình luận</a>
+        <a href="{{ Route('admin.comments.index') }}"><i class="fas fa-chart-bar"></i>Bình luận</a>
+    </li>
+    <li>
+        <a href="{{Route('admin.contact.index')}}"><i class="fas fa-table"></i>Liên hệ</a>
     </li>
     <li>
         <a href="charts.html"><i class="fas fa-chart-bar"></i>Đơn hàng</a>

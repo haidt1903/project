@@ -20,7 +20,7 @@
                     <a class="nav-link" href="{{ route('client.gioithieu') }}">Giới thiệu</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="">Liên hệ</a>
+                    <a class="nav-link" href="contact">Liên hệ</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="contact.html">Chính sách</a>
@@ -40,7 +40,9 @@
             <!-- user -->
             <div class="widgets-wrap float-md-right ml-4">
                 <div class="widget-header  mr-3">
+
                     <a href="{{route('show.cart')}}" class="icon icon-sm rounded-circle border"><i
+
                             class="fa fa-shopping-cart"></i></a>
                     <span class="badge badge-pill badge-danger notify">0</span>
                 </div>
@@ -81,7 +83,7 @@
                 @endif
 
 
-            </div> <!-- widgets-wrap.// -->
+            </div> 
 
         </div>
 

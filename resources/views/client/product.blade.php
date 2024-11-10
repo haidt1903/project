@@ -33,6 +33,7 @@
                 </div>
             </div>
             <div class="col">
+
                 <div class="card-body">
                     <div class="row">
                         @foreach ($products as $product)
@@ -58,6 +59,7 @@
                                     </div>
                                 </div>
                             </div>
+
                         @endforeach
                     </div>
                 </div>

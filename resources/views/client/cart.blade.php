@@ -55,33 +55,46 @@
                                                     <a
                                                     data-url="{{ route('remove.cart', ['id' => $cartItems['id']]) }}"
                                                      href="{{route('remove.cart',$cartItems['id'])}}" class="remove-btn" class="text-muted"><i class="fas fa-times"></i></a>
+
                                                 </div>
+                                            @endforeach
+    
+    
+                                            <hr class="my-4">
+    
+                                            <div class="pt-5">
+                                                <h6 class="mb-0"><a href="{{route('index')}}" class="text-body"><i
+                                                            class="fas fa-long-arrow-alt-left me-2"></i>Back to shop</a></h6>
                                             </div>
-                                        @endforeach
-
-
-                                        <hr class="my-4">
-
-                                        <div class="pt-5">
-                                            <h6 class="mb-0"><a href="{{route('index')}}" class="text-body"><i
-                                                        class="fas fa-long-arrow-alt-left me-2"></i>Back to shop</a></h6>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-lg-4 bg-body-tertiary">
-                                    <div class="p-5">
-                                        <h3 class="fw-bold mb-5 mt-2 pt-1">Summary</h3>
-                                        <hr class="my-4">
-
-                                        <h5 class="text-uppercase mb-3">Give code</h5>
-
-                                        <div class="mb-5">
-                                            <div data-mdb-input-init class="form-outline">
-                                                <input type="text" id="form3Examplea2"
-                                                    class="form-control form-control-lg" />
-                                                <label class="form-label" for="form3Examplea2">Enter your code</label>
+                                    <div class="col-lg-4 bg-body-tertiary">
+                                        <div class="p-5">
+                                            <h3 class="fw-bold mb-5 mt-2 pt-1">Summary</h3>
+                                            <hr class="my-4">
+    
+                                            <h5 class="text-uppercase mb-3">Give code</h5>
+    
+                                            <div class="mb-5">
+                                                <div data-mdb-input-init class="form-outline">
+                                                    <input type="text" id="form3Examplea2"
+                                                        class="form-control form-control-lg" />
+                                                    <label class="form-label" for="form3Examplea2">Enter your code</label>
+                                                </div>
                                             </div>
+    
+                                            <hr class="my-4">
+    
+                                            <div class="d-flex justify-content-between mb-5"><h5 class="text-uppercase">Total price</h5>
+                                                <h5 id="total_price">{{ number_format($total) }}</h5>
+                                            </div>
+    
+                                            <button type="button" data-mdb-button-init data-mdb-ripple-init
+                                                class="btn btn-dark btn-block btn-lg"
+                                                data-mdb-ripple-color="dark">Register</button>
+    
                                         </div>
+<<<<<<< HEAD
 
                                         <hr class="my-4">
 
@@ -93,6 +106,8 @@
                                         <button type="button" data-mdb-button-init data-mdb-ripple-init
                                             class="btn btn-dark btn-block btn-lg"
                                             data-mdb-ripple-color="dark"><a href="{{route('indexPayment')}}">Register</a></button>
+=======
+>>>>>>> 23001a6477a37d4f2265ca616c56f9dbf57ad1de
                                     </div>
                                 </div>
                             </div>
@@ -100,8 +115,7 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-
+        </section>
     
-@endsection
+        
+    @endsection

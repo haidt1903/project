@@ -47,6 +47,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
     public function carts()
 {
     return $this->hasMany(Cart::class);
@@ -57,4 +58,9 @@ public function orders()
     return $this->hasMany(Order::class);
 }
 
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 }
