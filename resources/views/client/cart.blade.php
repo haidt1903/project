@@ -49,7 +49,7 @@
                                                     <h6 class="mb-0 price" data-price="{{ $cartItems['price'] }}">{{ number_format($cartItems['price']) }}</h6>
                                                 </div>
                                                 <div>
-                                                    <h6 class="mb-0">{{ number_format($cartItems['price']*$cartItems['quantity']) }}</h6>
+                                                    <h6 class="mb-0 item-total">{{ number_format($cartItems['price'] * $cartItems['quantity']) }}</h6>
                                                 </div>
                                                 <div class="col-md-1 col-lg-1 col-xl-1 text-end">
                                                     <a
@@ -87,13 +87,12 @@
 
                                         <div class="d-flex justify-content-between mb-5">
                                             <h5 class="text-uppercase">Total price</h5>
-                                            <h5>{{ number_format($total) }}</h5>
+                                            <h5 id="total_price">{{ number_format($total) }}</h5>
                                         </div>
 
                                         <button type="button" data-mdb-button-init data-mdb-ripple-init
                                             class="btn btn-dark btn-block btn-lg"
-                                            data-mdb-ripple-color="dark">Register</button>
-
+                                            data-mdb-ripple-color="dark"><a href="{{route('indexPayment')}}">Register</a></button>
                                     </div>
                                 </div>
                             </div>

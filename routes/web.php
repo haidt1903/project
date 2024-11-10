@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Client\CartController;
+use App\Http\Controllers\Client\PaymentController;
 use App\Http\Controllers\Client\ProductController as ClientProductController;
 use App\Http\Middleware\Admin;
 use Illuminate\Support\Facades\Route;
@@ -66,6 +67,10 @@ Route::get('/cart', [CartController::class, 'show'])->name('show.cart');
 Route::post('/cart/update_quantity/{id}', [CartController::class, 'updateQuantity'])->name('update.quantity');
 Route::delete('/cart/remove/{id}', [CartController::class, 'remove'])->name('remove.cart');
 Route::post('/cart/clear', [CartController::class, 'clear'])->name('clear.cart');
+
+
+Route::get('payment', [PaymentController::class, 'index'])->name('indexPayment');
+Route::post('/payment/{orderId}', [PaymentController::class, 'payOrder'])->name('payOrder');
 
 
 

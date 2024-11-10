@@ -25,7 +25,7 @@ $(document).ready(function() {
     // Function to remove item from cart
     function removeItem(button) {
         let url = $(button).data('url');
-
+    
         $.ajax({
             type: "DELETE",
             url: url,
@@ -33,18 +33,12 @@ $(document).ready(function() {
             dataType: 'json',
             success: function(response) {
                 alert(response.message);  // Display success message
-                
+    
                 // Remove the item row from the DOM
                 $(button).closest('.row').remove();
-
-                // Optionally, update the cart total here
-                let total = 0;
-                $('.quantity_input').each(function() {
-                    let quantity = $(this).val();
-                    let price = $(this).closest('.row').find('.price').data('price');
-                    total += quantity * price;
-                });
-                $('#total_price').text(total.toLocaleString());
+    
+                // Update total cart price
+                updateCartTotal();
             },
             error: function(xhr, status, error) {
                 console.error(xhr.responseText);
@@ -52,6 +46,7 @@ $(document).ready(function() {
             }
         });
     }
+    
 
     // Bind remove button click event
     $('.remove-btn').on('click', function(event) {
@@ -60,11 +55,23 @@ $(document).ready(function() {
     });
 });
 
+function updateCartTotal() {
+    let total = 0;
+
+    $('.quantity_input').each(function() {
+        let quantity = $(this).val();
+        let price = $(this).closest('.row').find('.price').data('price');
+        total += quantity * price;
+    });
+
+    $('#total_price').text(total.toLocaleString());
+}
+
 $(document).ready(function() {
     function updateQuantity(input) {
         let url = $(input).data('url');
         let newQuantity = $(input).val();
-
+    
         $.ajax({
             type: "POST",
             url: url,
@@ -76,8 +83,15 @@ $(document).ready(function() {
             },
             dataType: 'json',
             success: function(response) {
-                alert('Quantity updated!');
-                // Optionally update other UI elements, like cart totals
+                // alert('Quantity updated!');
+    
+                // Update item price
+                let price = $(input).closest('.row').find('.price').data('price');
+                let itemTotal = newQuantity * price;
+                $(input).closest('.row').find('.item-total').text(itemTotal.toLocaleString());
+    
+                // Update total cart price
+                updateCartTotal();
             },
             error: function(xhr, status, error) {
                 console.error(xhr.responseText);
@@ -85,6 +99,8 @@ $(document).ready(function() {
             }
         });
     }
+    
+    
 
     // Listen for changes in the quantity input field
     $('.quantity_input').on('change', function() {

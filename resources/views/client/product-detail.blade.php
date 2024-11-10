@@ -62,7 +62,9 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="cart.html" class="btn btn-danger btn-lg btn-block text-uppercase">
+                        <a href=""
+                        data-url="{{route('add.cart',['id' => $product->id])}}"
+                        class="btn btn-danger add_to_cart btn-lg btn-block text-uppercase">
                             <i class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng
                         </a>
                     </form>
